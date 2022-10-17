@@ -5,22 +5,22 @@ import { expect } from "chai";
 const signUpForm = new SignUpForm;
 
 describe("Tests for Sign Up form", () => {
-    describe(`Tests for ${FIELDS.EMAIL} field`, () => {
+    describe(`Tests for "${FIELDS.EMAIL}" field`, () => {
         before(function() {
             this.valid = signUpForm.showValidValueSuccessMessage(FIELDS.EMAIL);
             this.invalid = signUpForm.showInvalidValueErrorMessage(FIELDS.EMAIL);
             this.empty = signUpForm.showEmptyFieldErrorMessage(FIELDS.EMAIL);
         });
 
-        it("Should display success message for email with lowercase letters", function() {
+        it("Should display success message for valid email (with lowercase letters)", function() {
             expect(signUpForm.validateEmailField("matthew@test.com")).to.equal(this.valid);
         });
 
-        it("Should display success message for email with uppercase letters", function() {
+        it("Should display success message for valid email (with uppercase letters)", function() {
             expect(signUpForm.validateEmailField("MATTHEW@TEST.COM")).to.equal(this.valid);
         });
 
-        it("Should display success message for email with numbers", function() {
+        it("Should display success message for valid email (with numbers)", function() {
             expect(signUpForm.validateEmailField("andrew1970@test.com")).to.equal(this.valid);
         });
 
@@ -46,7 +46,7 @@ describe("Tests for Sign Up form", () => {
     });
 
 
-    describe("Tests for Password field", () => {
+    describe(`Tests for "${FIELDS.PASSWORD}" field`, () => {
         before(function() {
             this.valid = signUpForm.showValidValueSuccessMessage(FIELDS.PASSWORD);
             this.invalid = signUpForm.showInvalidValueErrorMessage(FIELDS.PASSWORD);
@@ -85,12 +85,12 @@ describe("Tests for Sign Up form", () => {
             expect(signUpForm.validatePasswordField("PASSWORD1$")).to.equal(this.invalid);
         });
 
-        it("Should display error message for invalid password (without special symbol)", function() {
+        it("Should display error message for invalid password (without special character)", function() {
             expect(signUpForm.validatePasswordField("password123")).to.equal(this.invalid);
         });
     });
 
-    describe("Tests for Confirm password field", () => {
+    describe(`Tests for "${FIELDS.CONFIRM_PASSWORD}" field`, () => {
         before(function() {
             this.valid = signUpForm.showValidValueSuccessMessage(FIELDS.CONFIRM_PASSWORD);
             this.invalid = signUpForm.showInvalidValueErrorMessage(FIELDS.CONFIRM_PASSWORD);
