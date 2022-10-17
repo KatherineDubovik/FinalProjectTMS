@@ -10,7 +10,7 @@ describe("Tests for www.w3schools.com site - JavaScript Tutorial Page", () => {
     });
 
     it(`Should highlight ${TUTORIALS.JAVASCRIPT} item as active at top navigation bar`, () => {
-        javaScriptTutorialPage.waitForActiveBarItemToHaveText(TUTORIALS.JAVASCRIPT);
+        javaScriptTutorialPage.waitForActiveTopBarItemToHaveText(TUTORIALS.JAVASCRIPT);
     });
 
     it(`Should highlight first item as active by default at sidebar`, function () {
@@ -31,7 +31,7 @@ describe("Tests for www.w3schools.com site - JavaScript Tutorial Page", () => {
     });
 
     it(`Should follow ${PAGES.HOME} page by clicking on the Home icon at top navigation bar`, () => {
-        javaScriptTutorialPage.clickOnTheHomePageIconAtTopNavBar();
+        javaScriptTutorialPage.clickOnHomePageIconAtTopNavBar();
         javaScriptTutorialPage.waitForPageTitleToIncludeText("W3Schools Online Web Tutorials");
     });
 });

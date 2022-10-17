@@ -6,9 +6,8 @@
   "scripts": {
     "unit:test": "mocha --config unit/mocharc.json",
     "api:test": "mocha --config api/mocharc.json",
-    "cy:open": "cypress open --config-file cy-e2e/cypress.config.ts",
-    "ui:report": "allure generate cy-e2e/cypress/assets/allure-results --clean -o cy-e2e/cypress/assets/allure-report && allure open cy-e2e/cypress/assets/allure-report",
-    "ui:test": "cypress run --browser chrome --config-file cy-e2e/cypress.config.ts"
+    "ui:test": "cypress run --browser chrome --headed --config-file cy-e2e/cypress.config.ts",
+    "ui:report": "allure generate cy-e2e/cypress/assets/allure-results --clean -o cy-e2e/cypress/assets/allure-report && allure open cy-e2e/cypress/assets/allure-report"
   },
   "repository": {
     "type": "git",
@@ -31,7 +30,6 @@
     "allure-commandline": "^2.18.1",
     "chai": "^4.3.6",
     "cypress": "^10.10.0",
-    "cypress-iframe": "^1.0.1",
     "eslint": "^8.24.0",
     "mocha": "^10.0.0",
     "node": "^18.10.0",

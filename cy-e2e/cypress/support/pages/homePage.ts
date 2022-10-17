@@ -1,5 +1,4 @@
 import { BasePage } from "./basePage";
-import "cypress-iframe";
 import { DARK_PAGE_OPTIONS } from "../types/types";
 
 export class HomePage extends BasePage {
@@ -20,20 +19,6 @@ export class HomePage extends BasePage {
         cy.get("a").contains("Not Sure Where To Begin?").click();
     }
 
-    public changeSiteLanguage(language: string) {
-        this.getCurrentSiteLanguageElement().click();
-        cy.frameLoaded("iframe[class='goog-te-menu-frame skiptranslate']");
-        cy.iframe("iframe[class='goog-te-menu-frame skiptranslate']")
-        .find("a[class='goog-te-menu2-item']")
-        .contains(language)
-        .click();
-    }
-
-    public getCurrentSiteLanguageElement() {
-        cy.get("a[title='Translate W3Schools']").click();
-        return cy.get(".goog-te-menu-value > span").first();
-    }
-
     public getDarkPageModeElement() {
         return cy.get("a[onmouseover='mouseoverdarkicon()']");
     }
@@ -48,6 +33,10 @@ export class HomePage extends BasePage {
     }
 
     public getPageBodyElement() {
-        return cy.get("body")
+        return cy.get("body");
+    }
+
+    public waitForActiveTopBarItemToHaveText(text: string) {
+        cy.get('a[class="w3-bar-item w3-button active"]').contains(text, { matchCase: false });
     }
 }

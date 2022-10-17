@@ -13,18 +13,14 @@ export default defineConfig({
     screenshotsFolder: `${cypressFolder}/assets/screenshots`,
     fixturesFolder: `${cypressFolder}/fixtures`,
     setupNodeEvents(on, config) {
-      on('before:browser:launch', (browser, launchOptions) => {
-        if (browser.name === 'chrome') {
-          launchOptions.args.push('--lang=en-GB');
-          return launchOptions;
-        }
-      }),      
       AllureWriter(on, config);
       return config;
-      }
     },
     env: {
       allure: true,
       allureResultsPath: `${cypressFolder}/assets/allure-results`
-    }
+    },
+    viewportWidth: 1366,
+    viewportHeight: 768
+  }
 });

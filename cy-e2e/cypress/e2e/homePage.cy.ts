@@ -8,7 +8,7 @@ describe("Tests for www.w3schools.com site - Home Page", () => {
         homePage.visitPage();
     });
 
-    it("Should follow the 'Where to begin' page", () => {
+    it('Should follow the "Where to begin" page', () => {
         homePage.clickOnWhereToBeginLink();
         homePage.getPageUrl().should("include", "/where_to_start.asp");
         homePage.waitForPageTitleToIncludeText("W3Schools - How To Become a Web Developer");
@@ -16,18 +16,12 @@ describe("Tests for www.w3schools.com site - Home Page", () => {
 
     for(const tutorial in TUTORIALS) {
         const tutorialTitle = TUTORIALS[tutorial as keyof typeof TUTORIALS];
-        it(`Should follow ${tutorialTitle} tutorial page when entering ${tutorialTitle} value at search field`, () => {
+        it(`Should follow "${tutorialTitle} tutorial" page when entering "${tutorialTitle}" value at search field`, () => {
             homePage.searchTutorialsByText(tutorialTitle);
-            console.log(tutorial);
             homePage.waitForPageTitleToIncludeText(`${tutorialTitle} Tutorial`);
+            homePage.waitForActiveTopBarItemToHaveText(tutorialTitle);
         });
     }
-
-    it("Should change site language to Belarussian", () => {
-        const selectedLang = "белорусский";
-        homePage.changeSiteLanguage(selectedLang);
-        homePage.getCurrentSiteLanguageElement().should("have.text", selectedLang);
-    });
 
     it(`Should "${DARK_PAGE_OPTIONS.DARK_MODE}" and "${DARK_PAGE_OPTIONS.DARK_CODE}" options to be turned off by default`, () => {
         homePage.getPageBodyElement().should("not.have.class", DARK_PAGE_CLASSES.DARK_BOTH);

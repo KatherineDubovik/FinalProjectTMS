@@ -7,11 +7,7 @@ export class JavaScriptTutorialPage extends HomePage {
         this.url = '/js/default.asp';
      }
 
-    public waitForActiveBarItemToHaveText(text: string) {
-        cy.get('a[class="w3-bar-item w3-button active"]').contains(text, { matchCase: false });
-    }
-
-    public waitForSideBarElementToBeActive(indexElement: number) {
+     public waitForSideBarElementToBeActive(indexElement: number) {
         cy.get('#leftmenuinnerinner > a[target=_top]').eq(indexElement).should("have.class", "active");
     }
 
@@ -19,7 +15,7 @@ export class JavaScriptTutorialPage extends HomePage {
         cy.get(".w3-clear > a").contains(buttonType).click();
     }
 
-    public clickOnTheHomePageIconAtTopNavBar() {
+    public clickOnHomePageIconAtTopNavBar() {
         cy.get(".fa-home").click();
     }
 }
